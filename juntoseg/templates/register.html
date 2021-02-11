@@ -1,0 +1,35 @@
+<section ng-controller="RegisterCtrl">
+
+    <div class="modal" ng-show="showCofirmModal">
+        <div class="overlay" ng-click="showCofirmModal=false"></div>
+        <div class="content">
+            {% include 'modals/__confirmModal.html' %}
+        </div>
+    </div>
+
+    <section class="content">
+        <form>
+            <label>E-mail: 
+                <input type="text" placeholder="E-Mail" ng-model="registerData.email">
+            </label>
+            <label>Username: 
+                <input type="text" placeholder="username" ng-model="registerData.name">
+            </label>
+            <label>Password: 
+                <input type="password" placeholder="Password" ng-model="registerData.password">
+            </label>
+            <label>Confirm Password: 
+                <input type="password" placeholder="Confirm Password" ng-model="registerData.confirmPassword">
+            </label>
+        </form>
+
+        <div class="buttons">
+            <button class="main" ng-click="register()">Register</button>
+        </div>
+
+    </section>
+    <div class="buttons">
+        <button ng-click="$emit('changeTab', 'login')">Already has an account? Login!</button>
+        <button ng-click="$emit('changeTab', 'resetPwd')">Forgot password?</button>
+    </div>
+</section>

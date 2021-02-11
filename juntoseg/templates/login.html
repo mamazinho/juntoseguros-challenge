@@ -1,0 +1,23 @@
+<section ng-controller="LoginCtrl">
+    <section class="content">
+        <h5>If you have an account, you can Log in to platform.</h5>
+
+        <form>
+            <label>E-mail: 
+                <input type="text" placeholder="E-Mail" ng-model="loginData.email">
+            </label>
+            <label>Password: 
+                <input type="text" placeholder="Password" ng-model="loginData.password">
+            </label>
+        </form>
+
+        <div class="buttons">
+            <button class="main" ng-click="login()">Login</button>
+        </div>
+        
+    </section>
+    <div class="buttons">
+        <button ng-click="$emit('changeTab', 'register')">Have no account? Register!</button>
+        <button ng-click="$emit('changeTab', 'resetPwd')">Forgot password?</button>
+    </div>
+</section>

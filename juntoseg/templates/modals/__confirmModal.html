@@ -1,0 +1,20 @@
+<h4>Confirm Account Modal</h4>
+<p>This step would be an email, but how the challenge requirement specified to not fire emails, this modals exists</p>
+<p>I'm just showing the token as a didactic form to be evaluated, it got here and will be sent again for account confirmation. In normal cases, the token stand only in back and not come with the response</p>
+
+<div class="square">
+    <div class="buttons">
+        <button ng-click="seeToken=!seeToken">See token</button>
+    </div>
+    <div ng-show="seeToken">
+        <span> {[ myTokenConfirmation.slice(0, 50) ]}</span>
+        <span> {[ myTokenConfirmation.slice(50, 100) ]}</span>
+        <span> {[ myTokenConfirmation.slice(100, 150) ]}</span>
+        <span> {[ myTokenConfirmation.slice(150, 200) ]}</span>
+    </div>
+</div>
+
+<div class="buttons">
+    <button class="main" ng-click="confirm()">Confirm Account</button>
+    <button class="main" ng-click="showCofirmModal=false">Close without confirm</button>
+</div>

@@ -1,0 +1,25 @@
+version: '3.4'
+
+volumes:
+  mysql-db2: {}
+
+services:
+  database:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    env_file: .env
+    volumes:
+      - mysql-db2:/var/lib/mysql
+    ports:
+      - '3308:3306'
+    restart: always
+
+  servers:
+    build: ./
+    env_file: .env
+    ports:
+      - '5000:5000'
+    depends_on:
+      - database
+    command: ./run.sh
+    restart: always

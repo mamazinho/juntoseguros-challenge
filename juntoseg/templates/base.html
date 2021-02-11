@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Junto Seguros Challenge</title>
+
+        <!-- Libs -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/css/challenge.css">
+
+        <!-- App declaration -->
+        <script src="static/js/challenge.js"></script>
+
+        <!-- Factories -->
+        <script src="static/js/fctr/httpFctr.js"></script>
+
+        <!-- Controllers-->
+        <script src="static/js/ctrl/baseCtrl.js"></script>
+        <script src="static/js/ctrl/loginCtrl.js"></script>
+        <script src="static/js/ctrl/registerCtrl.js"></script>
+        <script src="static/js/ctrl/resetPasswordCtrl.js"></script>
+        <script src="static/js/ctrl/changePasswordCtrl.js"></script>
+
+    </head>
+
+    <body id="challenge" ng-app="challenge" ng-controller="BaseCtrl">
+        <section class="container">
+            <h3>Welcome to Junto Seguros challenge</h3>
+            <p>This platform it's a complete CRUD of users, using authentication.</p>
+            <p>More details you can find on README documentation.</p>
+        </section>
+
+        <section class="container" ng-if="active_tab == 'login'">
+            {% include 'login.html' %}
+        </section>
+
+        <section class="container" ng-if="active_tab == 'register'">
+            {% include 'register.html' %}
+        </section>
+
+        <section class="container" ng-if="active_tab == 'resetPwd'">
+            {% include 'resetPassword.html' %}
+        </section>
+
+    </body>
+</html>
