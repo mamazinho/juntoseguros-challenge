@@ -1,0 +1,17 @@
+{% comment %} <section ng-controller="DashboardCtrl"> {% endcomment %}
+<section>
+    <h2>Welcome, {{ profile }}</h2>
+    <h4>This is part of logged area, if you can see this, you are logged</h4>
+    <p>Here you can see all users</p>
+
+    <section class="content">
+
+        {% for user in users %}
+            <ul>{{ user }}</ul>
+        {% endfor %}
+
+    </section>
+    <div class="buttons">
+        <button class="main" ng-click="$emit('changeTab', 'login')">Logout</button>
+    </div>
+</section>

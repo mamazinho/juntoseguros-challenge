@@ -30,9 +30,9 @@ class LoginSerializer(serializers.ModelSerializer):
         user = authenticate(email=email, password=password)
 
         if not user:
-            raise AuthenticationFailed('Email ou senha inválidas')
+            raise AuthenticationFailed('Invalid credentials (email or password)')
         elif not user.is_active:
-            raise AuthenticationFailed('A conta está inativa, verifique o email enviado para ativação da conta')
+            raise AuthenticationFailed('Active your account before login')
 
         data = {
             'email': user.email,

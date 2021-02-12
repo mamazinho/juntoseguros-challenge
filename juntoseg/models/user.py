@@ -5,8 +5,8 @@ from django.contrib import admin
 from django.forms import PasswordInput
 from django.utils import timezone
 from rest_framework_simplejwt.tokens import RefreshToken
-import random
 from datetime import datetime
+import random, json
 
 class UserManager(BaseUserManager):
     def create_user(self, email, name, password=None):
@@ -74,7 +74,7 @@ class User(AbstractBaseUser):
             'refresh': str(tokens),
             'access': str(tokens.access_token)
         }
-        return data
+        return json.dumps(data)
 
     def get_full_name(self):
         # The user is identified by their email address

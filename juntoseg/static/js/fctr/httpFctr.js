@@ -1,18 +1,20 @@
- challenge.factory('HttpFctr', function WsHttp($q, $http) {
+ challenge.factory('HttpFctr', function WsHttp($q, $http, $rootScope) {
     return function(apiUrl, method, infos){
         var q = $q.defer()
         infos = typeof infos == 'object' ? infos : {}
         params = typeof infos.params == 'object' ? infos.params : {}
+        token = localStorage.getItem('token')
+        var headers = {}
+        if (token)
+            headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+        
+        console.log('tem token', headers.Authorization)
         $http({
             url: `/${apiUrl}/`,
             method: method,
-            withCredentials: true,
             params: params,
             data: infos.data,
-            responseType: 'json',
-            headers: {  
-                'Content-Type': infos.noContentType ? undefined : 'application/json',
-            },
+            headers: headers,
             timeout: q.promise,
         }).then(
             function(response){

@@ -1,4 +1,8 @@
 <section ng-controller="LoginCtrl">
+    <script> 
+        window.dashUrl = "{% url 'dashboard' %}"
+    </script>
+
     <section class="content">
         <h5>If you have an account, you can Log in to platform.</h5>
 
@@ -7,7 +11,7 @@
                 <input type="text" placeholder="E-Mail" ng-model="loginData.email">
             </label>
             <label>Password: 
-                <input type="text" placeholder="Password" ng-model="loginData.password">
+                <input type="password" placeholder="Password" ng-model="loginData.password">
             </label>
         </form>
 
