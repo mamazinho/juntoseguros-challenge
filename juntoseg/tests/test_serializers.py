@@ -1,49 +1,35 @@
-# from django.test import TestCase
-# from challenge.models import Athlete, AthleteInfo, Event
-# from challenge.serializers import AthleteInfoSerializer, AthleteSerializer, EventSerializer, EventOnlySerializer, AthleteNewInfoSerializer
+from django.test import TestCase
+from juntoseg.models import User
+from juntoseg.serializers import *
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
-# class ModelsTest(TestCase):
+class ModelsTest(TestCase):
 
-#     def setUp(self):
-#         self.athlete = Athlete.objects.create(
-#             athlete_name = 'Matheus'
-#         )
-#         self.athlete_info = AthleteInfo.objects.create(
-#             athlete = self.athlete,
-#             sex = 'M',
-#             age = 20,
-#             height = 1.76,
-#             weight = 60,
-#             team = 'Brasil',
-#             medal = 'Gold'
-#         )
-#         self.event = Event.objects.create(
-#             event_name = 'olympics',
-#             city = 'Curitiba',
-#             sport = 'parkour',
-#             season = 'Summer',
-#             year = 2020,
-#             games = '2020 Summer'
-#         )
+    def setUp(self):
+        self.user = User.objects.create(
+            email='test@teste.com',
+            name='teste',
+            password='teste123',
+        )
+        self.user_change = {
+            'email': 'test@teste.com',
+            'token': 'test987654321',
+            'password': 'teste321',
+            'confirmPassword': 'teste321'
+        }
 
-#         self.athlete_info.event.set([self.event.id])
+    def test_register_serializer(self):
+        serializer = RegisterSerializer(instance=self.user)
+        self.assertEqual(serializer.data['email'], 'test@teste.com')
 
-#     def test_event_serializer(self):
-#         serializer = EventSerializer(instance=self.event)
-#         self.assertEqual(serializer.data['city'], 'Curitiba')
+    def test_login_serializer(self):
+        serializer = LoginSerializer(instance=self.user)
+        self.assertEqual(serializer.data['email'], 'test@teste.com')
 
-#     def test_event_only_serializer(self):
-#         serializer = EventOnlySerializer(instance=self.event)
-#         self.assertEqual(serializer.data['event_name'], 'olympics')
-        
-#     def test_athlete_info_serializer(self):
-#         serializer = AthleteInfoSerializer(instance=self.athlete_info)
-#         self.assertEqual(serializer.data['age'], 20)
+    def test_reset_password_serializer(self):
+        serializer = ResetPasswordSerializer(instance=self.user)
+        self.assertEqual(serializer.data['email'], 'test@teste.com')
 
-#     def test_athlete_new_info_serializer(self):
-#         serializer = AthleteNewInfoSerializer(instance=self.athlete_info)
-#         self.assertEqual(serializer.data['weight'], 60)
-
-#     def test_athlete_serializer(self):
-#         serializer = AthleteSerializer(instance=self.athlete)
-#         self.assertEqual(serializer.data['athlete_name'], 'Matheus')
+    def test_user_serializer(self):
+        serializer = UserSerializer(instance=self.user)
+        self.assertEqual(serializer.data['email'], 'test@teste.com')

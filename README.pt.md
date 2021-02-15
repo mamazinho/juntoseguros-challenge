@@ -29,6 +29,9 @@ Você encontra como fazer seu setup em sua máquina Linux local através do text
     $ sudo apt install docker-compose
     $ sudo docker-compose up --build
 
+## How acessar:
+    Acesse 'http://127.0.0.1:5000' em seu navegador.
+
 ## Testes unitários dentro do container:
     Certifique-se que as etapas anteriores foram feitas e o container está rodando.
     $ sudo docker-compose run servers python manage.py test
@@ -59,6 +62,3 @@ Você encontra como fazer seu setup em sua máquina Linux local através do text
 
 ## Como rodar os testes unitários:
     $ python manage.py test
-
-## Como accessar:
-    No terminal mostrará algo como 'http://127.0.0.1:[port number]', basta colocar esse endereço no seu navegador e usa-lo.

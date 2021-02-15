@@ -1,5 +1,5 @@
 from django.test import TestCase
-from challenge.models import User
+from juntoseg.models import User
 from datetime import datetime
 
 class ModelsTest(TestCase):
@@ -11,7 +11,7 @@ class ModelsTest(TestCase):
             name = 'teste',
             created_at = datetime.now(),
             updated_at = datetime.now(),
-            is_admin = True,
+            is_admin = False,
             is_active = True
         )
 

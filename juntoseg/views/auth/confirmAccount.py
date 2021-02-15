@@ -2,11 +2,9 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from juntosegchallenge.settings import SECRET_KEY
 from juntoseg.models import User
-from juntoseg.serializers import ConfirmAccountSerializer
 import jwt, datetime
 
 class ConfirmAccountView(generics.GenericAPIView):
-    serializer_class = ConfirmAccountSerializer
     
     def post(self, request):
         token = request.data.get('token', '')
