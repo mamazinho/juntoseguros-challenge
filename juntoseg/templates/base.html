@@ -20,11 +20,12 @@
         <script src="static/js/ctrl/registerCtrl.js"></script>
         <script src="static/js/ctrl/resetPasswordCtrl.js"></script>
         <script src="static/js/ctrl/changePasswordCtrl.js"></script>
+        <script src="static/js/ctrl/dashboardCtrl.js"></script>
 
     </head>
 
     <body id="challenge" ng-app="challenge" ng-controller="BaseCtrl">
-        <section class="container">
+        <section class="container" ng-if="active_tab !== 'dashboard'">
             <h3>Welcome to Junto Seguros challenge</h3>
             <p>This platform it's a complete CRUD of users, using authentication.</p>
             <p>More details you can find on README documentation.</p>
@@ -40,6 +41,10 @@
 
         <section class="container" ng-if="active_tab == 'resetPwd'">
             {% include 'resetPassword.html' %}
+        </section>
+
+        <section class="container" ng-if="active_tab == 'dashboard'">
+            {% include 'dashboard.html' %}
         </section>
 
     </body>

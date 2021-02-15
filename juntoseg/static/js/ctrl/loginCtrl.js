@@ -9,21 +9,8 @@ challenge.controller('LoginCtrl', function($scope, HttpFctr, $timeout){
 
   $scope.login = () => {
     HttpFctr('login', 'POST', {data: $scope.loginData}).then((response) => {
-      console.log(response)
       $scope.$emit('setToken', response)
-      location = window.dashUrl
-      $timeout(() => {
-        $scope.goToDashboard()
-      }, 2000)
-    }).catch((error) => {
-      console.log('Error >> ', error)
-      alert(window.errorMessage)
-    })
-  }
-
-  $scope.goToDashboard = () => {
-    HttpFctr('dashboard', 'GET').then((response) => {
-      console.log(response)
+      $scope.$emit('changeTab', 'dashboard')
     }).catch((error) => {
       console.log('Error >> ', error)
       alert(window.errorMessage)

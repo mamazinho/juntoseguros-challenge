@@ -6,7 +6,7 @@
         token = localStorage.getItem('token')
         var headers = {}
         if (token)
-            headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+            headers['Authorization'] = `Bearer ${token}`
         
         console.log('tem token', headers.Authorization)
         $http({
@@ -14,6 +14,7 @@
             method: method,
             params: params,
             data: infos.data,
+            responseType: 'json',
             headers: headers,
             timeout: q.promise,
         }).then(

@@ -22,4 +22,3 @@ services:
     depends_on:
       - database
     command: ./run.sh
-    restart: always

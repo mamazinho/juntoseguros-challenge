@@ -26,19 +26,13 @@ challenge.controller('RegisterCtrl', function($scope, HttpFctr, $timeout){
   $scope.confirm = () => {
     HttpFctr('confirm-account', 'POST', {data: {token: $scope.myTokenConfirmation}})
     .then((response) => {
-      console.log(response)
       $scope.showCofirmModal = false
-      $scope.goToBase()
+      alert('Account created successfully')
+      $scope.$emit('changeTab', 'login')
     }).catch((error) => {
       console.log('Error >> ', error)
       alert(window.errorMessage)
     })
-  }
-
-  $scope.goToBase = () => {
-    $timeout(() => {
-      HttpFctr('', 'GET')
-    }, 2000)
   }
 
   $scope.__init__()

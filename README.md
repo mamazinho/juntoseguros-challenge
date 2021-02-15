@@ -42,9 +42,9 @@ Heroku has a limit in free plan about quantity of lines in tables on database, f
 You can find how make your setup and run the project in your Linux machine in the text below:
 
 ## Install virtualenvwrapper and create a virtualenv:
-    $ sudo apt-get install python-pip
+    $ sudo apt install python-pip
     $ pip install --upgrade virtualenv
-    $ sudo apt-get install python3 python3-pip virtualenvwrapper libmysqlclient-dev libsnappy-dev gcc libssl-dev
+    $ sudo apt install python3 python3-pip virtualenvwrapper libmysqlclient-dev libsnappy-dev gcc libssl-dev
     $ source /etc/bash_completion.d/virtualenvwrapper
     $ mkvirtualenv -p /usr/bin/python3 jsc
 

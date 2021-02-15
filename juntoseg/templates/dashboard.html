@@ -1,17 +1,25 @@
-{% comment %} <section ng-controller="DashboardCtrl"> {% endcomment %}
-<section>
-    <h2>Welcome, {{ profile }}</h2>
-    <h4>This is part of logged area, if you can see this, you are logged</h4>
-    <p>Here you can see all users</p>
+<section ng-controller="DashboardCtrl">
+    <h2>Welcome {[ profile.name ]},</h2>
+    <h4>This is part of logged area, if you can see this page with users, you are logged in</h4><br>
+    <p>Here you can see all users:</p><br>
 
-    <section class="content">
 
-        {% for user in users %}
-            <ul>{{ user }}</ul>
-        {% endfor %}
+    <table class="content">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>{[ user.name ]}</td>
+                <td>{[ user.email ]}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    </section>
     <div class="buttons">
-        <button class="main" ng-click="$emit('changeTab', 'login')">Logout</button>
+        <button class="main" ng-click="$emit('logout')">Logout</button>
     </div>
 </section>

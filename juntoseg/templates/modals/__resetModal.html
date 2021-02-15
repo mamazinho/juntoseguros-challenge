@@ -1,21 +1,19 @@
 <h4>Confirm Account Modal</h4>
 <p>This step would be an email, but how the challenge requirement specified to not fire emails, this modals exists.</p>
 <p>I'm just showing the token as a didactic form to be evaluated, it got here and will be sent again for account confirmation. In normal cases, the token stand only in back and not come with the response, but appears in email link.</p>
-<p>If this modal close without any alert error, your account was been activated, you can login.</p>
+<p>The link in email will still contains an user identifier encoded, and we have another API to validate user.</p>
+<p>If this modal close without any alert error, you will be able to change password.</p>
 
 <div class="square">
     <div class="buttons">
         <button ng-click="seeToken=!seeToken">See token</button>
     </div>
     <div ng-show="seeToken">
-        <span> {[ myTokenConfirmation.slice(0, 50) ]}</span>
-        <span> {[ myTokenConfirmation.slice(50, 100) ]}</span>
-        <span> {[ myTokenConfirmation.slice(100, 150) ]}</span>
-        <span> {[ myTokenConfirmation.slice(150, 200) ]}</span>
+        <span> {[ myTokenReset ]}</span>
     </div>
 </div>
 
 <div class="buttons">
-    <button class="main" ng-click="confirm()">Confirm Account</button>
-    <button class="main" ng-click="showCofirmModal=false">Close without confirm</button>
+    <button class="main" ng-click="showChangePassword=true; showResetModal=false">Change Password</button>
+    <button class="main" ng-click="showResetModal=false">Close without Reset</button>
 </div>
