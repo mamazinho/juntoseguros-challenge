@@ -20,6 +20,7 @@
 #     def test_login_api(self):
 #         print('reess masss')
 #         response = self.client.post('/register/', self.create_user)
-#         print('reess', response)
+#         print('re', response.json())
 #         response = self.client.post('/login/', self.user_login)
+#         print('reess', response.json())
 #         self.assertEqual(response.status_code, status.HTTP_200_OK)

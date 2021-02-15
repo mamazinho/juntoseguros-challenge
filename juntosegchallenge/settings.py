@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'juntoseg',
         'USER': 'juntoseg',
         'PASSWORD': 'junt0',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'database',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
