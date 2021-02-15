@@ -1,4 +1,4 @@
-Essa aplicação faz parte do desafio Back-end da Celero
+Essa aplicação faz parte do desafio Back-end da Junto Seguros
 
 Leia essa documentação em [EN-US](README.md)
 
@@ -6,9 +6,10 @@ Leia essa documentação em [EN-US](README.md)
 * Django
 * Django Rest framework
 * AngularJs
+* Docker
 
 ## A base do projeto:
-* Temos um template principal renderizado pelo Django, após carregado, os resto do front-end é renderizado pelo AngularJS, onde ele começará a enviar requisições para a API, que esta rodando no Django Rest Framework.
+* Temos um template principal renderizado pelo Django, após carregado, os resto do front-end é renderizado pelo AngularJS, onde ele começará a enviar requisições para a API, que esta rodando no Django Rest Framework. Por isso as rotas na URL nunca mudam, o angularJs mantém a rota principal e troca apenas os templates, e esse front-end bate nas APIs do back-end em rotas diferentes.
 
 
 ## Dúvidas:
@@ -18,22 +19,22 @@ Leia essa documentação em [EN-US](README.md)
 ***Por que AngularJs?***
 * Apesar de eu preferir VueJs para front-end, o angularJs permite uma simplicidade por rodar dentro do Django, dessa maneira o angularJs pode ser usado como um mini-framework melhor do que o vueJs.
 
-***Por que a relação ManyToMany ocorre no Athlete_infos e não no Atleta?***
-* Se a relação fosse feita usando o atleta eu poderia abrir o atleta e ter todos os eventos que ele participou mais facilmente, mas eu não teria a mesma facilidade para pegar as informações dos atletas por evento. Então, é melhor a informação do atleta ter vários eventos e vários eventos com essas informações ao invés do atleta em si. Mas estou aberto para receber sugestões sobre modelagem de dados ou qualquer outro problema.
+***Por que Docker em ambiente de desenvolvimento?***
+* Docker nos permite trabalhar com o mesmo ambiente e as mesmas versões de libs de maneira estática. Ele também nos dá uma facilidade na escabilidade do projeto, caso esse venha a crescer (mesmo esse não sendo o caso), além da economia de rescursos e divisão de containers com diferentes configurações.
 
-***Tempo para rodar o comando de popular o banco de dados***
-* Eu testei dois caminhos, o mais usado para performar em batchs é o bulk_create, para fazer apenas uma query para o banco de dados. Eu tentei seguir esse caminho (disponível no arquivo 'populateDB2.py'), mas o ganho de performance ainda é baixo, porque ainda demora muito para ler e popular as listas, e foi apenas um teste, eu deixei o arquivo como uma ideia não finalizada. Outro caminho, que funcionou, foi usar o basico get_or_create (disponível no arquivo 'populateDB.py'). Ambas as versões podem levar mais de meia hora para rodar todas as queries necessárias. Por esse motivo eu deixei um arquivo sql, caso não queira esperar todo o processo para popular o banco de dados, é melhor rodar o comando `mysql celero < challenge/utils/athlete_events.sql` depois de fazer as migrations. Estou aceitando sugestões,  fazer a rotina performar bem foi a parte mais difícil para mim.
+## Run in local machine
+Você encontra como fazer seu setup em sua máquina Linux local através do texto abaixo (para outro SOs, basta seguir o guia de instalação do docker-compose):
 
-***Por que Heroku?***
-* Heroku foi o melhor custo-benefício encontrado, pois oferece um plano gratuito com 10.000 linhas disponíveis para uso nas tabelas do banco de dados e tem uma integração muito fácil com o github. Ele tem um delay para fazer as operações de CRUD, as vezes a página precisa ser recarregada para aplicar o que foi feito, isso é um problema entre a reatividade do angularJs e o heroku, localmente isso não ocorre.
+## Instalação do Docker-compose e como rodar-lo:
+    $ sudo apt install docker-compose
+    $ sudo docker-compose up --build
 
+## Testes unitários dentro do container:
+    Certifique-se que as etapas anteriores foram feitas e o container está rodando.
+    $ sudo docker-compose run servers python manage.py test
 
-## Servers:
-Você pode acessar a aplicação no Heroku App clicando [aqui](https://challenge-celero.herokuapp.com/).
-Heroku tem um limite na quantidade de linhas que podem ser salvas por tabela no banco de dados no seu plano gratuito, por isso, essa versão possui menos registro de atletas e eventos. Eu coloquei um limite fixo também, para deixar-lo criar novos atletas, eventos e informações.
-
-## Rodando em uma máquina local
-Você pode entrar as instruções para rodar o projeto em sua máquina Linux no texto abaixo:
+## Configurações do container:
+    As etapas a seguir não são para rodar na sua máquina local, a menos que você queria rodar local, elas estão aqui apenas para ilustrar as configurações de setup do container. 
 
 ## Instalando virtualenvwrapper and criando um virtualenv:
     $ sudo apt-get install python-pip
