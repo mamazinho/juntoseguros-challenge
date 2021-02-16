@@ -37,7 +37,7 @@ Você encontra como fazer seu setup em sua máquina Linux local através do text
     $ sudo docker-compose run servers python manage.py test
 
 ## Configurações do container:
-    As etapas a seguir não são para rodar na sua máquina local, a menos que você queria rodar local, elas estão aqui apenas para ilustrar as configurações de setup do container. 
+### As etapas a seguir não são para rodar na sua máquina local, a menos que você queria rodar local, elas estão aqui apenas para ilustrar as configurações de setup do container. 
 
 ## Instalando virtualenvwrapper and criando um virtualenv:
     $ sudo apt-get install python-pip

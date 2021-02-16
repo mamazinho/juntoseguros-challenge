@@ -41,7 +41,8 @@ You can find how make your setup and run the project in your Linux machine in th
     
 
 ## Container configuration:
-    The following steps are not to make in your machine, at least if you want to run out of container, but it's not reccomended, I only show this because it's the container setup:
+
+### The following steps are not to make in your machine, at least if you want to run out of container, but it's not reccomended, I only show this because it's the container setup:
 
 ## Install virtualenvwrapper and create a virtualenv:
     $ sudo apt install python-pip
