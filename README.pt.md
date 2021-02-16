@@ -22,14 +22,14 @@ Leia essa documentação em [EN-US](README.md)
 ***Por que Docker em ambiente de desenvolvimento?***
 * Docker nos permite trabalhar com o mesmo ambiente e as mesmas versões de libs de maneira estática. Ele também nos dá uma facilidade na escabilidade do projeto, caso esse venha a crescer (mesmo esse não sendo o caso), além da economia de rescursos e divisão de containers com diferentes configurações.
 
-## Run in local machine
+## Rodando na sua máquina local
 Você encontra como fazer seu setup em sua máquina Linux local através do texto abaixo (para outro SOs, basta seguir o guia de instalação do docker-compose):
 
 ## Instalação do Docker-compose e como rodar-lo:
     $ sudo apt install docker-compose
     $ sudo docker-compose up --build
 
-## How acessar:
+## Como acessar:
     Acesse 'http://127.0.0.1:5000' em seu navegador.
 
 ## Testes unitários dentro do container:
